@@ -73,7 +73,7 @@ def create_entry():
 		if not isinstance(cook_time, int) or cook_time < 0:
 			return  return_message("cookTime must be a positive integer", 400)
 		cookbook[name] = Ingredient(name = name, cook_time = cook_time)
-		return return_message("Ingredient created successfully", 200)
+		return {}, 200
 	# --- Recipe ---
 	required_items = data.get("requiredItems")
 	if not isinstance(required_items,list) :
@@ -90,7 +90,7 @@ def create_entry():
 		seen.add(item_name)
 		items.append(RequiredItem(name = item_name, quantity = quantity))
 	cookbook[name] = Recipe(name = name, required_items=items)		
-	return return_message("Recipe created successfully", 200)
+	return {}, 200
 
 # Helper function to return the error message and successful message in the required form 
 def return_message(message: str, statuscode: int):
