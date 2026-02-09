@@ -63,7 +63,6 @@ def create_entry():
 		return  return_message("Request body is invalid", 400)
 	entry_type = data.get("type")
 	name = data.get("name")
-	name = parse_handwriting(name)
 	if entry_type not in {"recipe", "ingredient"}:
 		return return_message("Type must be 'recipe' or 'ingredient'", 400)
 	if name is None or name in cookbook: 
